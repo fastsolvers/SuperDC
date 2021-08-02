@@ -25,7 +25,7 @@ Any questions or feedbacks are welcome!
 
 Other package needed: FMM1D (https://github.com/fastsolvers/FMM1D)<br>
 Suggested package: HSS (see J. Xia's homepage)<br>
-Place the following folders under <superdc>:
+Place the following folders under <superdc>:<br>
   <superdc_1.0.0>, <fmm1d>
 
 ## tests/test_band.m
