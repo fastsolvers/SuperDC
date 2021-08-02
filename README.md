@@ -23,7 +23,7 @@ Any questions or feedbacks are welcomed!
 
 # Usage
 
-Other package needed (included): FMM1D (https://github.com/fastsolvers/FMM1D)\
+Other package needed (included): FMM1D (https://github.com/fastsolvers/FMM1D)<br>
 Suggested package: HSS
 
 ## tests/test_band.m
