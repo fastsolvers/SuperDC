@@ -29,11 +29,11 @@ Suggested package: HSS
 ## tests/test_band.m
 - A banded matrix test example
 
-## superdc.m
+## src/superdc.m
 - Main eigenvalue decomposition routine
 - Accepted inputs: Hermitian HSS matrices
 
-## superdcmv.m
+## src/superdcmv.m
 - Application of the eigenvector matrix Q or Q* to a vector
 
 
