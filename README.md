@@ -8,9 +8,8 @@ Stable Superfast Divide and Conquer Eigensolver for
 
 # Authors
 Any questions or feedbacks are welcomed!
-- Jianlin Xia: xiaj@purdue.edu
 - Xiaofeng Ou: ou17@purdue.edu
-
+- Jianlin Xia: xiaj@purdue.edu
 
 # Reference
 - Work the package is used for:\
