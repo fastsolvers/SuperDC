@@ -1,10 +1,11 @@
 # SuperDC (Version 1.0.0)
-Stable Superfast Divide and Conquer Eigensolver for
-- Hierarchical semiseparable matrix (HSS)
-- Banded matrix with small bandwidth
-- Block tridiagonal matirx with small subdiagonal block
-- Toeplitz matrix
-
+Stable Superfast Divide-and-Conquer Eigensolver for rank-structured Hermitian matrices -- Hermitian matrices with small off-diagonal ranks or numerical ranks. Examples:
+- Banded matrices
+- Toeplitz matrices (in Fourier space)
+- Some discretized integral equations
+- Schur complements in direct factorizations of some sparse matrices
+- Other dense or sparse matrices with small off-diagonal (numerical) ranks<br>
+(The matrices needed to be represented or approximated by a hierarchical semiseparable matrix (HSS) form.)
 
 # Authors
 Any questions or feedbacks are welcomed!
