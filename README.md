@@ -23,8 +23,8 @@ Any questions or feedbacks are welcomed!
 
 # Usage
 
-Other package needed (included): FMM1D (https://github.com/fastsolvers/FMM1D)
-Suggested package: HSS
+- Other package needed (included): FMM1D (https://github.com/fastsolvers/FMM1D)
+- Suggested package: HSS
 
 ## tests/test_band.m
 - A banded matrix test example
