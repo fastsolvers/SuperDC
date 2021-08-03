@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%% Banded matrix test %%%%%%%%%%%%%%%%%%%%%%%%
 
 addpath(genpath('../../superdc_1.0.0'))
-addpath(genpath('../../fmm1d'))
+addpath(genpath('../../../FMM1D'))
 
 %%% Random banded matrix example
 n = 8192;  % matrix size
