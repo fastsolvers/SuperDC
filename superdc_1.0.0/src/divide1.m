@@ -31,9 +31,7 @@ for i = n:-1:1
     c1 = ch{i}(1); 
     c2 = ch{i}(2);
 
-    if i == 250
-        1
-    end
+
     % update B generators of left subtree
     if isempty(ch{c1})
         if size(B{c1}, 1) <= size(B{c1}, 2)
