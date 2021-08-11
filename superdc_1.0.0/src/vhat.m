@@ -30,7 +30,7 @@ if n < N
     Dlam = bsxfun(@minus, Dlam, tau.');
     D = d - d.';
     D(1:(n+1):end) = ones(n,1);
-    v = (log(abs(Dlam))-log(abs(D))) * ones(n,1); v1 = v;
+    v = (log(abs(Dlam))-log(abs(D))) * ones(n,1);
     v = exp(1/2 * v);
     v(w < 0) = - v(w < 0);
     
