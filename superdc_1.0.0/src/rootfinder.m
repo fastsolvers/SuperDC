@@ -3,17 +3,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function  [x, tau,org, nflops, percent] = rootfinder(d, v, N)
+function  [x, tau, org, nflops, percent] = rootfinder(d, v, N)
 %%% Input:
 %%% d, v: as in secular equation
 %%% N: size threshold to use fmm
 
 %%% Ouput:
 %%% x: roots of secular equation 
-
+%%% tau: gaps
+%%% org: shifts for each root 
 
 if nargin < 3
-    N = 2^13;
+    N = 2^10;
 end
 nflops = 0;
 n = length(v);
