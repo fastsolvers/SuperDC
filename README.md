@@ -7,6 +7,8 @@ Stable Superfast Divide-and-Conquer Eigensolver for rank-structured Hermitian ma
 - Other dense or sparse matrices with small off-diagonal (numerical) ranks<br>
 (The matrices needed to be represented or approximated by a hierarchical semiseparable matrix (HSS) form.)
 
+*Provided as is. No warranty. No liability.*
+
 # Authors
 Any questions or feedbacks are welcome!
 - Xiaofeng Ou: ou17  -at-  purdue.edu
