@@ -25,7 +25,7 @@ Any questions or feedbacks are welcome!
 
 # Usage
 
-Other package needed:\
+Other package needed:
 - FMM1D (https://github.com/fastsolvers/FMM1D)
 - HSS (https://github.com/fastsolvers/HSS)
 Place the following folders under \<superdc\>:<br>
