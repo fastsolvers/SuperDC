@@ -25,13 +25,15 @@ Any questions or feedbacks are welcome!
 
 # Usage
 
-Other package needed: FMM1D (https://github.com/fastsolvers/FMM1D)<br>
-Suggested package: HSS (see J. Xia's homepage)<br>
+Other package needed:\
+- FMM1D (https://github.com/fastsolvers/FMM1D)
+- HSS (https://github.com/fastsolvers/HSS)
 Place the following folders under \<superdc\>:<br>
-  \<superdc_1.0.0\>, \<fmm1d\>
+  \<superdc_1.0.0\>, \<fmm1d\>, \<hss\>
 
-## tests/test_band.m
-- A banded matrix test example
+## tests/
+- test_band.m: A banded matrix test example
+- test_dense.m A dense matrix test example
 
 ## src/superdc.m
 - Main eigenvalue decomposition routine
