@@ -1,19 +1,17 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%% SUPERDC eigensolver %%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-function [lam, Q, time_divide, flops_divide, time_conquer, flops_conquer, rho] = superdc(D, U, B, R, tr, tol, N)
+function [lam,Q,time_divide,flops_divide,time_conquer,flops_conquer,rho] = superdc(D,U,B,R,tr,tol,N)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% SuperDC eigensolver %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Input:
-%%% D, U, B, R: hss generators
-%%% tr: hss tree
-%%% N: size threshold to use fmm
-%%% tol: tolerance for deflation
-
-%%% Lam: eigenvalues
-%%% Q: hss structured eigenmatrix
-
-
+% D,U,B,R: HSS generators
+% tr:      HSS tree
+% tol:     tolerance for deflation
+% N:       (optional) size threshold to use fmm; default 1024
+%
+%%% Output:
+% Lam:     eigenvalues
+% Q:       hss structured eigenmatrix
+% Other outputs for results reporting purpose
 
 if nargin < 7
     N = 2^10;
@@ -31,7 +29,6 @@ k = length(tr);
 t = clock;
 [D, ~, Z, desc, flops_divide] = divide2(D, U, B, R, tr);
 time_divide = etime(clock, t);
-
 
 
 %% conquering stage
