@@ -16,7 +16,7 @@ Any questions or feedbacks are welcome!
 
 # Reference
 - Work the package is used for:\
-  X. Ou and J. Xia, *SuperDC: Stable superfast divide-and-conquer eigenvalue decomposition*, submitted, 2021.
+  X. Ou and J. Xia, *SuperDC: Stable superfast divide-and-conquer eigenvalue decomposition*, submitted (2021), arXiv:2108.04209.
 - Earlier preliminary work:\
   J. Vogel, J. Xia, S. Cauley, and V. Balakrishnan, *Superfast divide-and-conquer method and perturbation analysis for structured eigenvalue solutions*,\
   SIAM J. Sci. Comput., 38 (2016), pp. A1358-A1382. (PDF--erratum. Journal article link)
