@@ -3,15 +3,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function  [x, tau, org, nflops, percent] = rootfinder(d, v, N)
+function  [x, tau,org, nflops, percent] = rootfinder(d, v, N)
 %%% Input:
 %%% d, v: as in secular equation
 %%% N: size threshold to use fmm
 
 %%% Ouput:
 %%% x: roots of secular equation 
-%%% tau: gaps
-%%% org: shifts for each root 
+
 
 if nargin < 3
     N = 2^10;
@@ -290,11 +289,38 @@ dphi = @(x, delta, i) dot(v(n:-1:i+1).^2, 1./(delta(n:-1:i+1) - x).^2);
 
 QJ = zeros(n,0);
 for i = J2'
-    y0 = (d(i)+d(i+1))/2;
-    w = rho + psi(y0, d, i) + phi(y0, d, i);
-    if w >= 0
-        org0 = i;                      % origin
-        delta = d - d(i);          % shift
+%     y0 = (d(i)+d(i+1))/2;
+%     w = rho + psi(y0, d, i) + phi(y0, d, i);
+%     if w >= 0
+%         org0 = i;                      % origin
+%         delta = d - d(i);          % shift
+%         ub = delta(i+1)/2;
+%         lb = 0;
+%         if lb < tau(i) && tau(i) <= ub
+%             x0  = tau(i);
+%         else
+%             x0 = (ub + lb) / 2;
+%         end
+%         
+%     elseif w < 0
+%         org0 = i + 1;                  % origin
+%         delta = d - d(i+1);        % shift
+%         ub = 0;
+%         lb = delta(i)/2;
+%         if lb < tau(i) && tau(i) < ub
+%             x0  = tau(i);
+%         else
+%             x0 = (ub + lb) / 2;
+%         end
+%     end
+
+    %%%%%% shift the origin according to the newly calculated w0
+    x0 = d0(i) / 2;
+    w0 = rho + psi(x0, d-d(i), i) + phi(x0, d-d(i), i);
+    if w0 >= 0
+        org0 = i;
+        org(i) = org0;
+        delta = d - d(i);           
         ub = delta(i+1)/2;
         lb = 0;
         if lb < tau(i) && tau(i) <= ub
@@ -303,9 +329,10 @@ for i = J2'
             x0 = (ub + lb) / 2;
         end
         
-    elseif w < 0
-        org0 = i + 1;                  % origin
-        delta = d - d(i+1);        % shift
+    elseif w0 < 0
+        org0 = i + 1;
+        org(i) = org0;
+        delta = d - d(i+1);       
         ub = 0;
         lb = delta(i)/2;
         if lb < tau(i) && tau(i) < ub
@@ -314,6 +341,14 @@ for i = J2'
             x0 = (ub + lb) / 2;
         end
     end
+
+    %%%%%% shift the origin according to the previously calculated f0(i)
+%     org0 = org(i);      
+%     delta = d - d(org0);
+%     x0 = tau(i);
+%     ub = xub(i);
+%     lb = xlb(i);
+    
     
     % initial upper/lower bound
     ub0 = ub;
@@ -338,6 +373,7 @@ for i = J2'
     iter_ct = 0; 
     swtch = 1;
     while abs(w) > erretm * eps
+        
         %%% maximal iterations
         if iter_ct >= MAX_ITER
             if displaywarning
@@ -367,9 +403,9 @@ for i = J2'
         if swtch == 0   
             c =  - (delta(i) - x0) * dpsi(x0, delta, i) - (delta(i+1) - x0) * dphi(x0, delta, i) + w;       
         elseif swtch == 1 
-            if f0(i) >= 0
+            if org0 == i
                 c = - (delta(i+1) - x0) * dw - v(i)^2 * (delta(i) - delta(i+1)) / (delta(i) - x0)^2 + w;  
-            elseif f0(i) < 0
+            elseif org0 == i+1
                 c = - (delta(i) - x0) * dw - v(i+1)^2 * (delta(i+1) - delta(i)) / (delta(i+1) - x0)^2 + w;  
             end
         end
@@ -377,9 +413,9 @@ for i = J2'
         %%% eta : root update
         if abs(c) == 0          % handle corner case : c == 0
             if abs(a) == 0
-                if f0(i) >= 0
+                if org0 == i
                     a = v(i)^2 + (delta(i+1) - x0)^2 * (dw - v(i)^2/(delta(i) - x0)^2);
-                elseif f0(i) < 0
+                elseif org0 == i+1
                     a = v(i+1)^2 + (delta(i) - x0)^2 * (dw - v(i+1)^2/(delta(i+1) - x0)^2);
                 end
             end
@@ -590,9 +626,6 @@ end
 tau = [tau; x0];
 org = [org; n];
 x = [x; x0 + d(n)];
-
-
-
 
 
 
